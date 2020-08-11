@@ -1,7 +1,7 @@
 name = "ToggledLH"
 uuid = "f9770d44-d9d3-4282-8d90-ec50d637f0bd"
 authors = ["hendri54 <hendricksl@protonmail.com>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [compat]
 julia = "^1"

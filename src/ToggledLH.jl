@@ -4,9 +4,6 @@ export @toggled, @tog_assert, toggle
 
 assert_toggle() = true
 
-macro toggled(expr)
-    :( @toggled(true, $expr) )
-end
 
 """
     @toggled(cond, expr)
@@ -29,7 +26,7 @@ macro toggled(cond, expr)
     quote
         if assert_toggle()
             if $cond
-                $expr
+                $(esc(expr))
             else
                 nothing
             end
@@ -38,6 +35,11 @@ macro toggled(cond, expr)
         end
         # :(assert_toggle() ?  ($cond  &&  $expr)  : nothing)
     end
+end
+
+
+macro toggled(expr)
+    esc(:( @toggled(true, $expr) ))
 end
 
 
